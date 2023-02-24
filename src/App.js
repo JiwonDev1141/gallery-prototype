@@ -1,23 +1,33 @@
 import logo from './logo.svg';
-import './App.css';
+import { Canvas } from '@react-three/fiber';
+import { Suspense } from 'react';
+import Gallery from './components/canvas/Gallery';
+import { OrbitControls } from '@react-three/drei'
+import Header from './components/dom/Header';
+// import { Switch, Route } from "react-router-dom";
+import World from './pages/World';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="root">
+      
+      {/* <Header></Header> */}
+      <BrowserRouter>
+      <Header />
+      <Routes>
+          <Route path="/" exact={true} element={<World/>} />
+          <Route path="/login" exact={true} element={<Login/>} />
+          <Route path="/sign-up" exact={true} element={<SignUp/>} />
+      </Routes>
+      </BrowserRouter>
+
+      
+
+
+      
     </div>
   );
 }
