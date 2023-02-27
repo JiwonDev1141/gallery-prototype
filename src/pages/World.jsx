@@ -19,7 +19,9 @@ const World = () => {
             <ambientLight intensity={1} />
             <OrbitControls target={[0, 0, 40]} />
             <Suspense>
-                <FrameLg scale={1.5} position={[9,4,70]} showPop={showImgPop} setShowPop={setShowImgPop}  />
+                <FrameLg scale={1.7} position={[9,4,70]} rotation={[0,0,0]} showPop={showImgPop} setShowPop={setShowImgPop}  />
+                {/* <FrameLg scale={1.5} position={[9,4,75]} showPop={showImgPop} setShowPop={setShowImgPop}  /> */}
+
                 <Gallery />
             </Suspense>
         </Canvas>
