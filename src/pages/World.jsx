@@ -1,6 +1,6 @@
-import { OrbitControls } from '@react-three/drei';
-import { Canvas } from '@react-three/fiber';
-import React, { Suspense, useState } from 'react';
+import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
+import { Canvas, useThree } from '@react-three/fiber';
+import React, { Suspense, useRef, useState } from 'react';
 import FrameLg from '../components/canvas/Frame-lg';
 import Gallery from '../components/canvas/Gallery';
 import ImgPop from '../components/dom/imgPop';
@@ -9,6 +9,9 @@ import ImgPop from '../components/dom/imgPop';
 const World = () => {
 
     const [showImgPop, setShowImgPop] = useState(0);
+    const perspectiveCamera = useRef();
+   
+    
 
     return <div>
         <ImgPop showPop={showImgPop} />
@@ -18,8 +21,10 @@ const World = () => {
         >
             <ambientLight intensity={1} />
             <OrbitControls target={[0, 0, 40]} />
+            <PerspectiveCamera ref={perspectiveCamera} position={[0, 10, 50]} makeDefault={true} />
+            
             <Suspense>
-                <FrameLg scale={1.7} position={[9,4,70]} rotation={[0,0,0]} showPop={showImgPop} setShowPop={setShowImgPop}  />
+                <FrameLg cameraRef={perspectiveCamera} scale={2} position={[9,3.5,70]} rotation={[0,0,0]} showPop={showImgPop} setShowPop={setShowImgPop}  />
                 {/* <FrameLg scale={1.5} position={[9,4,75]} showPop={showImgPop} setShowPop={setShowImgPop}  /> */}
 
                 <Gallery />
