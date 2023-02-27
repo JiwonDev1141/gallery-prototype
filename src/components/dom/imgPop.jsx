@@ -13,7 +13,6 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     z-index: 100;
-    
 `
 const Img = styled.img`
     width: 90%;
@@ -37,16 +36,17 @@ const ImgPop = ({ showPop, setShowPop }) => {
 
         imgPopRef.current.style.display = "flex";
 
-    }, [showPop])
+    }, [showPop]);
 
     const closePop = () => {
         imgPopRef.current.style.display = "none";
+        
     }
 
     return (
         <Container ref={imgPopRef}>
             <CloseBtn onClick={closePop}>X</CloseBtn>
-            <Img src="/rockwon.png" />
+            <Img src="/bird.jpg" />
         </Container>
     )
 }

@@ -11,7 +11,7 @@ const World = () => {
     const [showImgPop, setShowImgPop] = useState(0);
 
     return <div>
-        <ImgPop showPop={showImgPop} setShowPop={setShowImgPop} />
+        <ImgPop showPop={showImgPop} />
         <Canvas
             camera={{ position: [0, 10, 50], rotateZ: 50 }}
             style={{ width: "100%", height: "90vh" }}
