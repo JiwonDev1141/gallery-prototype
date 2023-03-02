@@ -19,7 +19,8 @@ const World = () => {
             camera={{ position: [0, 10, 50], rotateZ: 50 }}
             style={{ width: "100%", height: "90vh" }}
         >
-            <ambientLight intensity={1} />
+            <ambientLight intensity={0} />
+            <directionalLight intensity={5} postion={[0,0,0]} />
             <OrbitControls target={[0, 0, 40]} />
             <PerspectiveCamera ref={perspectiveCamera} position={[0, 10, 50]} makeDefault={true} />
             
