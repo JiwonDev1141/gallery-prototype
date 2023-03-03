@@ -7,7 +7,9 @@ const usePersonControl = () => {
         KeyS: 'backward',
         KeyA: 'left',
         KeyD: 'right',
-        Space: 'jump'
+        Space: 'jump',
+        KeyQ: 'leftRotate',
+        KeyE: 'rightRotate'
     }
 
     const moveFieldByKey = (key) => keys[key]

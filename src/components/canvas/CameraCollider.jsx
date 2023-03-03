@@ -11,14 +11,15 @@ function CameraCollider() {
 
     const characterRef = useRef();
 
-    const { forward, backward, left, right, jump } = usePersonControl();
+    const { forward, backward, left, right, jump, leftRotate, rightRotate } = usePersonControl();
     const { nodes, materials, animations} = useGLTF("/models/core_from_portal_2.glb");
 
     const frontVector = new Vector3(0, 0, 0)
     const sideVector = new Vector3(0, 0, 0)
     const direction = new Vector3(0, 0, 0)
+    
 
-    let MOVESPEED = 30;
+    let MOVESPEED = 20;
 
     const [mesh, api] = useSphere(() => ({
         mass: 1,
@@ -43,7 +44,7 @@ function CameraCollider() {
     const [positionX, setPositionX] = useState(0);
     const [positionY, setPositionY] = useState(30);
     const [positionZ, setPositionZ] = useState(40);
-    const [rotationZ, setRotationZ] = useState([0, 0, 0]);
+    const [rotationZ, setRotationZ] = useState(0);
 
     useEffect(() => {
         console.log(nodes)
@@ -54,16 +55,27 @@ function CameraCollider() {
     useFrame(() => {
         frontVector.set(0, 0, Number(forward) - Number(backward));
         sideVector.set(Number(right) - Number(left), 0, 0);
-
+        
         direction.subVectors(frontVector, sideVector).normalize().multiplyScalar(MOVESPEED);
         api.velocity.set(direction.x, 0, direction.z);
-
+        
         mesh.current.getWorldPosition(characterRef.current.position);
-
+        
         setPositionX(characterRef.current.position.x);
         setPositionY(characterRef.current.position.y);
         setPositionZ(characterRef.current.position.z);
 
+        console.log("leftRotate: ", leftRotate);
+        console.log("rightRotate: ", rightRotate);
+
+        console.log("leftRotate: ", Number(leftRotate));
+        console.log("rightRotate: ", Number(rightRotate));
+
+
+        const newRotateZ = (( Number(leftRotate) - Number(rightRotate) ) / Math.PI) + rotationZ
+        newRotateZ ? setRotationZ(newRotateZ)  : console.log(rotationZ);
+        
+        
     })
 
     return (
