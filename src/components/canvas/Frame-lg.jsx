@@ -6,7 +6,7 @@ import { useGLTF } from '@react-three/drei';
 import { clone as SkeletonUtilsClone} from '../../config/SkeletonUtils';
 import { Vector3 } from 'three';
 
-const FrameLg = ({ cameraRef, scale = 1, position = [0, 0, 0], rotation = [0,0,0], showPop, setShowPop, img = "/bird.jpg", img2 = "/logo512.png" }) => {
+const FrameLg = ({ orbitControl, cameraRef, scale = 1, position = [0, 0, 0], rotation = [0,0,0], showPop, setShowPop, img = "/bird.jpg", img2 = "/logo512.png" }) => {
     const gltf = useLoader(GLTFLoader, '/models/frame-lg.glb');
     // const { nodes, materials } = useGLTF("/models/frame-lg.glb");
     const scene = useThree(state => state.scene);
@@ -24,17 +24,19 @@ const FrameLg = ({ cameraRef, scale = 1, position = [0, 0, 0], rotation = [0,0,0
         console.log(frameObj);
         setShowPop(showPop + 1);
         console.log(showPop);
+
+        moveCameraToTarget();
         // cameraRef.current.target = new Vector3(-5.372424608101299, 7.193366221251127, 71.2461724682974)
         // cameraRef.current.object.position.set(-6.451137657170182, 7.221026776823959, 71.49336697047174)
         // frameObj.current.children[0].children[0].children[0].visible = false;
     }
 
-    window.addEventListener("click", () => {
-        console.log(cameraRef)
-    })
 
-    const moveCamera = () => {
+
+    const moveCameraToTarget = () => {
         const currentPosition = cameraRef.current.position;
+        cameraRef.current.position.set(gltf.scene.position.x - 10, gltf.scene.position.y + 3, gltf.scene.position.z + 0.5);
+        orbitControl.current.target = new Vector3(...gltf.scene.position);
     }
 
 

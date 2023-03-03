@@ -6,7 +6,7 @@ const Gallery = () => {
     const gltf = useLoader(GLTFLoader, '/models/floating_gallery.glb');
     return (
         <Suspense>
-            <primitive object={gltf.scene} />
+            <primitive position={[0,0,0]} object={gltf.scene} />
         </Suspense>
     )
 }

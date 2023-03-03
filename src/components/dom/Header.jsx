@@ -7,7 +7,7 @@ const StyledHeader = styled.div`
     height: 5vh;
     color: white;
     display: flex;
-
+    align-items: center;
 `
 
 const NavBox = styled.div`
@@ -24,13 +24,15 @@ const NavBox = styled.div`
 const NavBtn = styled.button`
     cursor: pointer;
     width: 50%;
-    height: 50px;
+    height: 100%;
+    font-weight: 600;
 `
 
-const SiteMark = styled.div`
-    color: skyblue;
+const SiteMark = styled.em`
+    color: white;
     font-weight: 700;
-    font-size: 24px
+    font-size: 24px;
+    margin-left: 16px;
 `
 
 const Header = () => {
@@ -47,7 +49,7 @@ const Header = () => {
                 </NavBtn>
             </NavBox>
             <Link to="/"><SiteMark>
-                Rockwon Gallery
+                Loom
             </SiteMark></Link>
         </StyledHeader>
     )
