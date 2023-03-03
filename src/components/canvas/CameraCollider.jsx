@@ -65,11 +65,11 @@ function CameraCollider() {
         setPositionY(characterRef.current.position.y);
         setPositionZ(characterRef.current.position.z);
 
-        console.log("leftRotate: ", leftRotate);
-        console.log("rightRotate: ", rightRotate);
+        // console.log("leftRotate: ", leftRotate);
+        // console.log("rightRotate: ", rightRotate);
 
-        console.log("leftRotate: ", Number(leftRotate));
-        console.log("rightRotate: ", Number(rightRotate));
+        // console.log("leftRotate: ", Number(leftRotate));
+        // console.log("rightRotate: ", Number(rightRotate));
 
 
         const newRotateZ = (( Number(leftRotate) - Number(rightRotate) ) / Math.PI) + rotationZ
