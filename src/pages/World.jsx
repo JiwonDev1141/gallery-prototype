@@ -3,6 +3,7 @@ import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { Canvas, useThree } from "@react-three/fiber";
 import React, { Suspense, useRef, useState } from "react";
 import CameraCollider from "../components/canvas/CameraCollider";
+import { BoxCollider } from "../components/canvas/Colliders";
 import FrameLg from "../components/canvas/Frame-lg";
 import Gallery from "../components/canvas/Gallery";
 import WorldCollider from "../components/canvas/WorldCollider";
@@ -20,17 +21,14 @@ const World = () => {
         camera={{ position: [0, 10, 50], rotateZ: 50 }}
         style={{ width: "100%", height: "90vh" }}
       >
-        <Physics gravity={[0, -10, 0]}>
-          {/* <ambientLight intensity={1} /> */}
-          <directionalLight
-            intensity={2}
-            color={"white"}
-            postion={[0, 10, 0]}
-          />
-          <OrbitControls />
+        <Physics gravity={[0, -100, 0]}>
+          <ambientLight intensity={0.3} />
+          <directionalLight intensity={0.5} postion={[0, 10, 0]} />
+          <pointLight color="white" position={[0, -5, 0]} />
+          {/* <OrbitControls /> */}
           {/* <pointLight /> */}
 
-          {/* <CameraCollider /> */}
+          <CameraCollider />
 
           {/* <WorldCollider position={[0,-100,50]} args={[3000,1,3000]} isGround={true} rotation={[0,1.4,0]} /> */}
           {/* <PerspectiveCamera ref={perspectiveCamera} position={[0, 10, 50]} makeDefault={true} /> */}
@@ -48,6 +46,39 @@ const World = () => {
             {/* <FrameLg scale={1.5} position={[9,4,75]} showPop={showImgPop} setShowPop={setShowImgPop}  /> */}
 
             <Gallery />
+            <BoxCollider
+              position={[-0.5, -1, 0]}
+              args={[1000, 1, 1000]}
+              visible={false}
+              isGround={true}
+            />
+
+            <BoxCollider
+              position={[1, -1, -30]}
+              args={[1000, 1000, 10]}
+              isGround={false}
+              visible={false}
+            />
+            <BoxCollider
+              position={[1, -1, 20]}
+              args={[1000, 1000, 10]}
+              isGround={false}
+              visible={false}
+            />
+
+            <BoxCollider
+              position={[-60, -1, 20]}
+              args={[10, 1000, 100]}
+              isGround={false}
+              visible={false}
+            />
+
+            <BoxCollider
+              position={[70, -1, 20]}
+              args={[10, 1000, 100]}
+              isGround={false}
+              visible={false}
+            />
           </Suspense>
         </Physics>
       </Canvas>
