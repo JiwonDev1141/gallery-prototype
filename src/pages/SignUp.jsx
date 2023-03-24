@@ -28,20 +28,21 @@ const LoginForm = styled.form`
 
 const InputTag = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 10%;
+  justify-content: flex-start;
+  width: 100%;
   margin-bottom: 10px;
 `;
 
 const InputTagText = styled.div`
   width: 100px;
-  text-align: center;
   height: 25px;
+  white-space: nowrap;
 `;
 
 const InputTagImg = styled.img`
   paddingright: 12px;
   height: 25px;
+  margin-right: 10px;
 `;
 
 const LoginInput = styled.input`
@@ -128,8 +129,8 @@ const SignUp = () => {
           name="password"
         />
         <InputTag>
-          <InputTagImg src="/images/icon/.png" />
-          <InputTagText>PasswordCheck</InputTagText>
+          <InputTagImg src="/images/icon/check_guard.png" />
+          <InputTagText>Password Check</InputTagText>
         </InputTag>
         <LoginInput
           placeholder="비밀번호 입력 확인"
@@ -138,7 +139,7 @@ const SignUp = () => {
         />
         <InputTag>
           <InputTagImg src="/images/icon/star.png" />
-          <InputTagText>CreatorName</InputTagText>
+          <InputTagText>Creator Name</InputTagText>
         </InputTag>
         <LoginInput
           placeholder="작가 이름 입력 (20자 이내, 영문, 숫자, 한글 사용가능)"
