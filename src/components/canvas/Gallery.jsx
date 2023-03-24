@@ -13,10 +13,11 @@ const Gallery = () => {
   const birdImgTexture = useLoader(TextureLoader, "/bird.jpg");
   console.log(gltf);
   gltf.materials.Art_002.map = birdImgTexture;
-  gltf.materials.FLOOR.map = imgTexture;
+  gltf.materials.FLOOR.map = birdImgTexture;
+  gltf.materials.FLOOR.metalnessMap = birdImgTexture;
+
   gltf.materials.FLOOR.metalness = 1;
-  gltf.materials.FLOOR.roughness = 0.5;
-  gltf.materials.FLOOR.metalnessMap = imgTexture;
+  gltf.materials.FLOOR.roughness = 0.2;
 
   return (
     <Suspense>

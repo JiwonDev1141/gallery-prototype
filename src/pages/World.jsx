@@ -8,6 +8,11 @@ import FrameLg from "../components/canvas/Frame-lg";
 import Gallery from "../components/canvas/Gallery";
 import WorldCollider from "../components/canvas/WorldCollider";
 import ImgPop from "../components/dom/imgPop";
+import styled from "styled-components";
+
+const Container = styled.div`
+  padding-top: 5vh;
+`;
 
 const World = () => {
   const [showImgPop, setShowImgPop] = useState(false);
@@ -15,15 +20,19 @@ const World = () => {
   const orbitControl = useRef();
 
   return (
-    <div>
+    <Container>
       <ImgPop showPop={showImgPop} setShowPop={setShowImgPop} />
       <Canvas
         camera={{ position: [0, 10, 50], rotateZ: 50 }}
-        style={{ width: "100%", height: "90vh" }}
+        style={{ width: "100%", height: "95vh" }}
       >
         <Physics gravity={[0, -100, 0]}>
-          <ambientLight intensity={0.3} />
-          <directionalLight intensity={0.5} postion={[0, 10, 0]} />
+          <ambientLight intensity={1} />
+          <directionalLight
+            // color="skyblue"
+            intensity={0.6}
+            postion={[0, 10, 0]}
+          />
           <pointLight color="white" position={[0, -5, 0]} />
           {/* <OrbitControls /> */}
           {/* <pointLight /> */}
@@ -82,7 +91,7 @@ const World = () => {
           </Suspense>
         </Physics>
       </Canvas>
-    </div>
+    </Container>
   );
 };
 

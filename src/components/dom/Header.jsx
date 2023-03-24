@@ -6,8 +6,9 @@ const StyledHeader = styled.div`
   height: 5vh;
   display: flex;
   align-items: center;
-  position: fixed;
+  position: absolute;
   z-index: 10;
+  background-color: white;
 `;
 
 const NavBox = styled.div`
@@ -43,12 +44,32 @@ const Header = () => {
     <StyledHeader>
       <NavBox>
         <NavBtn backgroundColor="#D9D9D9" border="none">
-          <Link style={{ width: "100%", height: "100%" }} to="/login">
+          <Link
+            style={{
+              display: "flex",
+              width: "100%",
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            to="/login"
+          >
             Login
           </Link>
         </NavBtn>
         <NavBtn backgroundColor="white">
-          <Link to="/sign-up">Sign Up</Link>
+          <Link
+            style={{
+              display: "flex",
+              width: "100%",
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            to="/sign-up"
+          >
+            Sign Up
+          </Link>
         </NavBtn>
       </NavBox>
       <Link to="/">

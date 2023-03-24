@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -17,7 +18,6 @@ const MainArea = styled.div``;
 const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   width: 40%;
   height: 30%;
 `;
@@ -26,6 +26,7 @@ const InputTag = styled.div`
   display: flex;
   justify-content: space-between;
   width: 50px;
+  margin-bottom: 10px;
 `;
 
 const LoginInput = styled.input`
@@ -33,7 +34,7 @@ const LoginInput = styled.input`
   border-bottom: solid 2px black;
   background-color: #d9d9d9;
   font-size: 14px;
-
+  margin-bottom: 20px;
   ::placeholder,
   ::-webkit-input-placeholder {
     color: black;
@@ -58,6 +59,7 @@ const LoginBtn = styled.input`
   justify-content: center;
   font-weight: 600;
   margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 const PageTitle = styled.h1`
@@ -98,7 +100,9 @@ const Login = () => {
               <span> | </span>
               <span>비밀번호 찾기</span>
             </div>
-            <span style={{ fontWeight: 600 }}>회원가입</span>
+            <Link to="/sign-up">
+              <span style={{ fontWeight: 600 }}>회원가입</span>
+            </Link>
           </LoginNav>
         </LoginForm>
       </Container>
