@@ -1,5 +1,5 @@
 import { Physics } from "@react-three/cannon";
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { OrbitControls, PerspectiveCamera, useHelper } from "@react-three/drei";
 import { Canvas, useThree } from "@react-three/fiber";
 import React, { Suspense, useRef, useState } from "react";
 import CameraCollider from "../components/canvas/CameraCollider";
@@ -9,6 +9,7 @@ import Gallery from "../components/canvas/Gallery";
 import WorldCollider from "../components/canvas/WorldCollider";
 import ImgPop from "../components/dom/imgPop";
 import styled from "styled-components";
+import { PointLightHelper } from "three";
 
 const Container = styled.div`
   padding-top: 5vh;
@@ -27,13 +28,13 @@ const World = () => {
         style={{ width: "100%", height: "95vh" }}
       >
         <Physics gravity={[0, -100, 0]}>
-          <ambientLight intensity={1} />
-          <directionalLight
+          {/* <ambientLight intensity={1} /> */}
+          {/* <directionalLight
             // color="skyblue"
             intensity={0.6}
             postion={[0, 10, 0]}
-          />
-          <pointLight color="white" position={[0, -5, 0]} />
+          /> */}
+
           {/* <OrbitControls /> */}
           {/* <pointLight /> */}
 
@@ -58,7 +59,7 @@ const World = () => {
             <BoxCollider
               position={[-0.5, -1, 0]}
               args={[1000, 1, 1000]}
-              visible={false}
+              visible={true}
               isGround={true}
             />
 
